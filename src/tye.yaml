@@ -1,0 +1,34 @@
+# tye application configuration file
+# read all about it at https://github.com/dotnet/tye
+#
+# when you've given us a try, we'd love to know what you think:
+#    https://aka.ms/AA7q20u
+#
+name: mixcore
+services:
+- name: mixcore
+  project: applications/Mixcore/mixcore.csproj
+- name: mix-common
+  project: modules/mix.common/mix.common.csproj
+- name: mix-account
+  project: modules/mix.account/mix.account.csproj
+- name: mix-portal
+  project: modules/mix.portal/mix.portal.csproj
+- name: mix-messenger
+  project: modules/mix.messenger/mix.messenger.csproj
+- name: mix-scheduler
+  project: modules/mix.scheduler/mix.scheduler.csproj
+- name: mix-grpc
+  project: modules/mix.grpc/mix.grpc.csproj
+- name: mix-tenancy
+  project: modules/mix.tenancy/mix.tenancy.csproj
+- name: mix-storage
+  project: modules/mix.storage/mix.storage.csproj
+- name: mix-services-ecommerce
+  project: services/ecommerces/mix.services.ecommerce/mix.services.ecommerce.csproj
+- name: mix-services-databases
+  project: services/mix-databases/mix.servives.databases/mix.services.databases.csproj
+- name: mix-services-graphql
+  project: services/graphql/mix.services.graphql/mix.services.graphql.csproj
+- name: mixcore-gateway
+  project: applications/mixcore.gateway/mixcore.gateway.csproj

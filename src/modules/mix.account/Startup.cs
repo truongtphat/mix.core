@@ -13,7 +13,8 @@ namespace Mix.Account
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            MixFileHelper.CopyFolder(MixFolders.MixCoreConfigurationFolder, MixFolders.MixContentFolder);
+            MixFileHelper.CreateFolderIfNotExist(MixFolders.MixContentFolder);
+            MixFileHelper.CopyFolder(MixFolders.MixCoreSharedConfigurationFolder, MixFolders.MixContentSharedFolder);
             services.AddMixServices(Assembly.GetExecutingAssembly(), Configuration);
             services.AddMixCors();
 
