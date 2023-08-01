@@ -23,6 +23,6 @@
         public const string SiteContentAssetsFolder = "mixcontent/assets";
         public const string SharedConfigurationFolder = "../../shared/MixContent";
         public const string MixCoreConfigurationFolder = "../../applications/Mixcore/mixcontent";
-        public const string MixCoreSharedConfigurationFolder = "../../applications/Mixcore/mixcontent";
+        public const string MixCoreSharedConfigurationFolder = "../../applications/Mixcore/mixcontent/shared";
     }
 }

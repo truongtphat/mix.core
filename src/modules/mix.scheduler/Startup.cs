@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Mix.Database.Entities.Account;
 using Mix.Heart.Services;
-
+using System.IO;
 using System.Reflection;
 
 namespace Mix.Scheduler
@@ -20,8 +20,11 @@ namespace Mix.Scheduler
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            MixFileHelper.CreateFolderIfNotExist(MixFolders.MixContentFolder);
-            MixFileHelper.CopyFolder(MixFolders.MixCoreSharedConfigurationFolder, MixFolders.MixContentSharedFolder);
+            if (!Directory.Exists(MixFolders.MixContentFolder))
+            {
+                MixFileHelper.CreateFolderIfNotExist(MixFolders.MixContentFolder);
+                MixFileHelper.CopyFolder(MixFolders.MixCoreSharedConfigurationFolder, MixFolders.MixContentSharedFolder);
+            }
 
             services.AddMixServices(Assembly.GetExecutingAssembly(), Configuration);
             services.AddMixCors();

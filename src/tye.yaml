@@ -8,27 +8,53 @@ name: mixcore
 services:
 - name: mixcore
   project: applications/Mixcore/mixcore.csproj
+  bindings:
+   - port: 5010
 - name: mix-common
   project: modules/mix.common/mix.common.csproj
+  bindings:
+   - port: 5004
 - name: mix-account
   project: modules/mix.account/mix.account.csproj
+  bindings:
+   - port: 5002
 - name: mix-portal
   project: modules/mix.portal/mix.portal.csproj
+  bindings:
+   - port: 5006
 - name: mix-messenger
   project: modules/mix.messenger/mix.messenger.csproj
+  bindings:
+   - port: 5012
 - name: mix-scheduler
   project: modules/mix.scheduler/mix.scheduler.csproj
+  bindings:
+   - port: 5014
 - name: mix-grpc
   project: modules/mix.grpc/mix.grpc.csproj
+  bindings:
+   - port: 5016
 - name: mix-tenancy
   project: modules/mix.tenancy/mix.tenancy.csproj
+  bindings:
+   - port: 5008
 - name: mix-storage
   project: modules/mix.storage/mix.storage.csproj
+  bindings:
+   - port: 5018
 - name: mix-services-ecommerce
   project: services/ecommerces/mix.services.ecommerce/mix.services.ecommerce.csproj
+  bindings:
+   - port: 7254
 - name: mix-services-databases
   project: services/mix-databases/mix.servives.databases/mix.services.databases.csproj
+  bindings:
+   - port: 7048
 - name: mix-services-graphql
   project: services/graphql/mix.services.graphql/mix.services.graphql.csproj
+  bindings:
+   - port: 7299
 - name: mixcore-gateway
   project: applications/mixcore.gateway/mixcore.gateway.csproj
+  bindings:
+   - port: 7221
