@@ -10,6 +10,7 @@
         public const string PortalApps = "portal-apps";
         public const string MixApplications = "apps";
         public const string MixContentFolder = "mixcontent";
+        public const string MixContentSharedFolder = "mixcontent/shared";
         public const string AppConfigFolder = "mixcontent/shared/appconfigs";
         public const string JsonDataFolder = "mixcontent/shared/json";
         public const string MixCacheFolder = "mixcontent/cache";
@@ -22,5 +23,6 @@
         public const string SiteContentAssetsFolder = "mixcontent/assets";
         public const string SharedConfigurationFolder = "../../shared/MixContent";
         public const string MixCoreConfigurationFolder = "../../applications/Mixcore/mixcontent";
+        public const string MixCoreSharedConfigurationFolder = "../../applications/Mixcore/mixcontent/shared";
     }
 }
