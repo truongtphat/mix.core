@@ -14,5 +14,9 @@
         public const string Payments = "Payments";
         public const string Azure = "Azure";
         public const string Log = "Log";
+        public const string Endpoints = "Endpoints";
+        public const string IPSecurity = "IPSecurity";
+        public const string Portal = "Portal";
+        public const string Translator = "Translator";
     }
 }

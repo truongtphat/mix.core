@@ -1,10 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.Extensions.Configuration;
 
 namespace Mix.Lib.Services
 {
     public class TranslatorService : JsonConfigurationServiceBase
     {
-        public TranslatorService() : base(MixAppConfigFilePaths.Translator)
+        public TranslatorService(IConfiguration configuration)
+            : base(configuration, MixAppSettingsSection.Translator, MixAppSettingsFilePaths.Translator)
         {
         }
         public T Translate<T>(string name, string culture, T defaultValue = default)

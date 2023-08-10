@@ -1,6 +1,8 @@
 ﻿{
-  "IsRetrictIp": true,
-  "AllowedPortalIps": [],
-  "AllowedIps": [],
-  "ExceptIps": []
+  "IPSecurity": {
+    "IsRetrictIp": true,
+    "AllowedPortalIps": [],
+    "AllowedIps": [],
+    "ExceptIps": []
+  }
 }

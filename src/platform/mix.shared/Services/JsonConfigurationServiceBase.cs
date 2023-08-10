@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json.Linq;
 
 namespace Mix.Shared.Services
@@ -6,11 +7,14 @@ namespace Mix.Shared.Services
     {
         public JObject AppSettings { get; set; }
         protected string FilePath { get; set; }
+        protected string Section { get; set; }
 
         protected readonly FileSystemWatcher watcher = new();
-
-        public JsonConfigurationServiceBase(string filePath)
+        protected readonly IConfiguration _configuration;
+        public JsonConfigurationServiceBase(IConfiguration configuration, string section, string filePath)
         {
+            _configuration = configuration;
+            Section = section;
             FilePath = filePath;
             LoadAppSettings();
             WatchFile();
@@ -56,7 +60,7 @@ namespace Mix.Shared.Services
             if (settings != null)
             {
                 settings.Content = AppSettings.ToString();
-                return MixFileHelper.SaveFile(settings) != null;
+                return MixFileHelper.SaveFile(settings);
             }
             else
             {
@@ -80,10 +84,9 @@ namespace Mix.Shared.Services
 
         protected virtual void LoadAppSettings()
         {
-            var settings = MixFileHelper.GetFileByFullName($"{FilePath}{MixFileExtensions.Json}", true);
-            string content = string.IsNullOrWhiteSpace(settings.Content) ? "{}" : settings.Content;
-            JObject jsonSettings = JObject.Parse(content);
-            AppSettings = jsonSettings;
+            object settings = new object();
+            _configuration.GetSection(Section).Bind(settings);
+            AppSettings = JObject.FromObject(settings);
         }
     }
 }

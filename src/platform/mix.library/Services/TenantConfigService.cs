@@ -3,7 +3,7 @@
     public class TenantConfigService : ConfigurationServiceBase<TenantConfigurationModel>
     {
         public TenantConfigService(string tenantName)
-            : base($"{MixAppConfigFilePaths.AppConfigs}/{tenantName}/configurations")
+            : base($"{MixAppSettingsFilePaths.AppConfigs}/{tenantName}/configurations")
         {
             AppSettings ??= new();
         }

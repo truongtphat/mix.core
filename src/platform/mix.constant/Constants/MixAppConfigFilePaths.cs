@@ -1,6 +1,6 @@
 ﻿namespace Mix.Constant.Constants
 {
-    public class MixAppConfigFilePaths
+    public class MixAppSettingsFilePaths
     {
         public const string Authentication = "MixContent/Shared/AppConfigs/authentication";
         public const string AppConfigs = "MixContent/AppConfigs";
@@ -14,7 +14,6 @@
 
         public const string Global = "MixContent/Shared/AppConfigs/global";
         public const string Portal = "MixContent/Shared/AppConfigs/portal";
-        public const string EPPlus = "MixContent/Shared/AppConfigs/epplus";
         public const string IPSecurity = "MixContent/Shared/AppConfigs/ip_security";
         public const string MixHeart = "MixContent/Shared/AppConfigs/mix_heart";
         public const string Quartz = "MixContent/Shared/AppConfigs/quartz";

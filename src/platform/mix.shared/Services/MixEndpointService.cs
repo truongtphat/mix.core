@@ -1,9 +1,12 @@
-﻿namespace Mix.Shared.Services
+﻿using Microsoft.Extensions.Configuration;
+
+namespace Mix.Shared.Services
 {
     public sealed class MixEndpointService : JsonConfigurationServiceBase
     {
         public string DefaultDomain;
-        public MixEndpointService() : base(MixAppConfigFilePaths.Endpoint)
+        public MixEndpointService(IConfiguration configuration) 
+            : base(configuration, MixAppSettingsSection.Endpoints, MixAppSettingsFilePaths.Endpoint)
         {
         }
 

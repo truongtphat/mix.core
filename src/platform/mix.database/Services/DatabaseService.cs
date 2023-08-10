@@ -15,7 +15,7 @@ namespace Mix.Database.Services
     {
         public MixDatabaseProvider DatabaseProvider => AppSettings.DatabaseProvider;
         protected IHttpContextAccessor HttpContextAccessor;
-        public DatabaseService(IHttpContextAccessor httpContextAccessor) : base(MixAppConfigFilePaths.Database, true)
+        public DatabaseService(IHttpContextAccessor httpContextAccessor) : base(MixAppSettingsFilePaths.Database, true)
         {
             HttpContextAccessor = httpContextAccessor;
             AesKey = GlobalConfigService.Instance.AppSettings.ApiEncryptKey;

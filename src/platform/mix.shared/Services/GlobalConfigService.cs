@@ -37,7 +37,7 @@ namespace Mix.Shared.Services
         #endregion
 
         public GlobalConfigService()
-            : base(MixAppConfigFilePaths.Global)
+            : base(MixAppSettingsFilePaths.Global)
         {
         }
         public new string AesKey

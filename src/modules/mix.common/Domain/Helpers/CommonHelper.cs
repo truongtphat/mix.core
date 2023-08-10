@@ -7,7 +7,8 @@ namespace Mix.Common.Domain.Helpers
 {
     public class CommonHelper
     {
-        internal static GlobalSettings GetAppSettings(MixAuthenticationConfigurations authConfigurations, MixTenantSystemModel currentTenant)
+        internal static GlobalSettings GetAppSettings(
+            MixAuthenticationConfigurations authConfigurations, MixTenantSystemModel currentTenant)
         {
             //var cultures = _cultureService.Cultures;
             //var culture = _cultureService.LoadCulture(lang);
@@ -18,9 +19,7 @@ namespace Mix.Common.Domain.Helpers
                 DefaultCulture = currentTenant?.Configurations.DefaultCulture,
                 IsEncryptApi = currentTenant?.Configurations.IsEncryptApi ?? false,
                 LastUpdateConfiguration = currentTenant?.Configurations.LastUpdateConfiguration,
-                PortalThemeSettings = PortalConfigService.Instance.AppSettings,
                 ApiEncryptKey = GlobalConfigService.Instance.AppSettings.ApiEncryptKey,
-                //Cultures = cultures,
                 PageTypes = Enum.GetNames(typeof(MixPageType)),
                 ModuleTypes = Enum.GetNames(typeof(MixModuleType)),
                 MixDatabaseTypes = Enum.GetNames(typeof(MixDatabaseType)),

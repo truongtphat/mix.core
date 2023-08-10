@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using Mix.Heart.Enums;
 using Mix.Heart.Helpers;
 using Mix.Shared.Services;
@@ -12,9 +13,9 @@ namespace Mix.Service.Services
 {
     public class MixLogService
     {
-        static MixLogService()
+        public MixLogService(IConfiguration configuration)
         {
-            MixEndpointService enpointSrv = new();
+            MixEndpointService enpointSrv = new(configuration);
         }
 
         public static async Task LogExceptionAsync(Exception? ex = null, MixErrorStatus? status = MixErrorStatus.ServerError, string? message = null)
