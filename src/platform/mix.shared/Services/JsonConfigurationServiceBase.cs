@@ -8,15 +8,17 @@ namespace Mix.Shared.Services
         public JObject AppSettings { get; set; }
         protected string FilePath { get; set; }
         protected string Section { get; set; }
+        protected DateTime LastModified { get; private set; }
+        protected DateTime LastSaved { get; private set; }
 
         protected readonly FileSystemWatcher watcher = new();
-        protected readonly IConfiguration _configuration;
-        public JsonConfigurationServiceBase(IConfiguration configuration, string section, string filePath)
+        public JsonConfigurationServiceBase(string section, string filePath)
         {
-            _configuration = configuration;
             Section = section;
             FilePath = filePath;
             LoadAppSettings();
+            LastModified = DateTime.UtcNow;
+            LastSaved = DateTime.UtcNow;
             WatchFile();
         }
 
@@ -59,7 +61,8 @@ namespace Mix.Shared.Services
             var settings = MixFileHelper.GetFileByFullName($"{FilePath}{MixFileExtensions.Json}", true);
             if (settings != null)
             {
-                settings.Content = AppSettings.ToString();
+                settings.Content = (new JObject(new JProperty(Section, AppSettings))).ToString();
+                LastSaved = DateTime.UtcNow;
                 return MixFileHelper.SaveFile(settings);
             }
             else
@@ -78,15 +81,18 @@ namespace Mix.Shared.Services
 
         private void OnChanged(object sender, FileSystemEventArgs e)
         {
-            Thread.Sleep(500);
-            LoadAppSettings();
+            if (LastSaved > LastModified)
+            {
+                Thread.Sleep(500);
+                LoadAppSettings();
+            }
         }
 
         protected virtual void LoadAppSettings()
         {
-            object settings = new object();
-            _configuration.GetSection(Section).Bind(settings);
-            AppSettings = JObject.FromObject(settings);
+            var settings = MixFileHelper.GetFileByFullName($"{FilePath}{MixFileExtensions.Json}", true);
+            string content = string.IsNullOrWhiteSpace(settings.Content) ? "{}" : settings.Content;
+            AppSettings = JObject.Parse(content).Value<JObject>(Section) ?? new();
         }
     }
 }

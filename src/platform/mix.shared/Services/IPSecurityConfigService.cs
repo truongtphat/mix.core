@@ -6,8 +6,8 @@ namespace Mix.Shared.Services
 {
     public class IPSecurityConfigService : JsonConfigurationServiceBase
     {
-        public IPSecurityConfigService(IConfiguration configuration)
-            : base(configuration, MixAppSettingsSection.IPSecurity, MixAppSettingsFilePaths.IPSecurity)
+        public IPSecurityConfigService()
+            : base(MixAppSettingsSection.IPSecurity, MixAppSettingsFilePaths.IPSecurity)
         {
         }
     }

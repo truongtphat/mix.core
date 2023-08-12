@@ -13,9 +13,8 @@ namespace Mix.Service.Services
 {
     public class MixLogService
     {
-        public MixLogService(IConfiguration configuration)
+        public MixLogService()
         {
-            MixEndpointService enpointSrv = new(configuration);
         }
 
         public static async Task LogExceptionAsync(Exception? ex = null, MixErrorStatus? status = MixErrorStatus.ServerError, string? message = null)

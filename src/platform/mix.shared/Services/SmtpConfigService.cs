@@ -6,8 +6,7 @@ namespace Mix.Shared.Services
 {
     public class SmtpConfigService : JsonConfigurationServiceBase
     {
-        public SmtpConfigService(IConfiguration configuration)
-            : base(configuration, MixAppSettingsSection.Smtp, MixAppSettingsFilePaths.Smtp)
+        public SmtpConfigService() : base(MixAppSettingsSection.Smtp, MixAppSettingsFilePaths.Smtp)
         {
         }
     }

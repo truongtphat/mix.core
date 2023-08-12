@@ -8,8 +8,7 @@ namespace Mix.Shared.Services
     {
        
 
-        public PortalConfigService(IConfiguration configuration)
-            : base(configuration, MixAppSettingsSection.Portal, MixAppSettingsFilePaths.Portal)
+        public PortalConfigService() : base(MixAppSettingsSection.Portal, MixAppSettingsFilePaths.Portal)
         {
         }
     }

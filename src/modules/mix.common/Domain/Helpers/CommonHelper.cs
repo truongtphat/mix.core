@@ -2,12 +2,14 @@
 using Mix.Service.Models;
 using Mix.Shared.Models.Configurations;
 using Mix.Shared.Services;
+using System.Configuration;
 
 namespace Mix.Common.Domain.Helpers
 {
-    public class CommonHelper
+    public sealed class CommonHelper
     {
-        internal static GlobalSettings GetAppSettings(
+        public static GlobalSettings GetAppSettings(
+            IConfiguration configuration,
             MixAuthenticationConfigurations authConfigurations, MixTenantSystemModel currentTenant)
         {
             //var cultures = _cultureService.Cultures;
@@ -18,6 +20,7 @@ namespace Mix.Common.Domain.Helpers
                 Domain = currentTenant?.Configurations.Domain,
                 DefaultCulture = currentTenant?.Configurations.DefaultCulture,
                 IsEncryptApi = currentTenant?.Configurations.IsEncryptApi ?? false,
+                PortalThemeSettings = LoadAppSettings(configuration, MixAppSettingsFilePaths.Portal, MixAppSettingsSection.Portal),
                 LastUpdateConfiguration = currentTenant?.Configurations.LastUpdateConfiguration,
                 ApiEncryptKey = GlobalConfigService.Instance.AppSettings.ApiEncryptKey,
                 PageTypes = Enum.GetNames(typeof(MixPageType)),
@@ -34,6 +37,13 @@ namespace Mix.Common.Domain.Helpers
                     new JProperty("Microsoft", authConfigurations.Microsoft?.AppId),
                 }
             };
+        }
+
+        private static JObject LoadAppSettings(IConfiguration configuration, string filePath, string section)
+        {
+            var settings = MixFileHelper.GetFileByFullName($"{filePath}{MixFileExtensions.Json}", true);
+            string content = string.IsNullOrWhiteSpace(settings.Content) ? "{}" : settings.Content;
+            return JObject.Parse(content).Value<JObject>(section);
         }
     }
 }

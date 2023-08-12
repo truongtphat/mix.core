@@ -89,6 +89,7 @@ namespace Mix.Lib.Helpers
                        .AddJsonFile($"{MixAppSettingsFilePaths.Shared}/AppConfigs/redis.json", true, true)
                        .AddJsonFile($"{MixAppSettingsFilePaths.Shared}/AppConfigs/log.json", true, true)
                        .AddJsonFile($"{MixAppSettingsFilePaths.Shared}/AppConfigs/rate_limit.json", true, true)
+                       .AddJsonFile($"{MixAppSettingsFilePaths.Shared}/AppConfigs/portal.json", true, true)
                        .AddEnvironmentVariables();
                })
                 .ConfigureWebHostDefaults(webBuilder =>
