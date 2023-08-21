@@ -8,5 +8,6 @@ ftp -inv <<EOF
 open $FTP_HOST
 user $FTP_USERNAME $FTP_PASSWORD
 cd /test_folder
-mput $FILES
+prompt
+mput *
 bye
