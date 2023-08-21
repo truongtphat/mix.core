@@ -25,6 +25,8 @@ user $FTP_USERNAME $FTP_PASSWORD
 
 # Go to local current directory
 cd "/test_folder"
+CWD=$(pwd)
+echo $CWD
 mput $FILES
 #mdel app_offline.htm
 bye
