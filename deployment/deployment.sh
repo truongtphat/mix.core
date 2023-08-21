@@ -24,7 +24,7 @@ ftp -inv $FTP_HOST <<EOF
 user $FTP_USERNAME $FTP_PASSWORD
 
 # Go to local current directory
-cd "/test_folder"
+cd /test_folder
 CWD=$(pwd)
 echo $CWD
 mput $FILES
