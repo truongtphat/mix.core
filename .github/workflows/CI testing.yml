@@ -43,6 +43,9 @@ jobs:
         user $FTP_USERNAME $FTP_PASSWORD
         cd $REMOTE_FOLDER
         put app_offline.htm
+        bye
     - name: Deploy
       shell: bash
-      run: bash develop/deployment/deployment.sh
+      run: |
+        cd $LOCAL_FOLDER
+        bash develop/deployment/deployment.sh
