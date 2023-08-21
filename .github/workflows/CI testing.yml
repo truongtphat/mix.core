@@ -38,7 +38,7 @@ jobs:
     - name: Take app offline
       run: |
         cd develop/deployment
-        ftp -inv <<-EOF
+        ftp -inv @<<-EOF
         open $FTP_HOST
         user $FTP_USERNAME $FTP_PASSWORD
         cd $REMOTE_FOLDER
