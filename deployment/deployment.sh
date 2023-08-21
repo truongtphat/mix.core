@@ -12,12 +12,14 @@
 FILES="./*"
 
 # Go to local current directory
+cd $LOCAL_FOLDER
 echo $LOCAL_FOLDER
-for entry in "$LOCAL_FOLDER"/*
+CWD=$(pwd)
+echo $CWD
+for entry in "$CWD"/*
 do
   echo "$entry"
 done
-# cd $LOCAL_FOLDER
 # echo $HOST $USERNAME $PASSWORD
 # FTP login and upload is explained in paragraph below
 ftp -inv $FTP_HOST <<EOF
