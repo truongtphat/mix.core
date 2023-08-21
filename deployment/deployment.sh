@@ -13,6 +13,10 @@ FILES="./*"
 
 # Go to local current directory
 echo $LOCAL_FOLDER
+for entry in "$LOCAL_FOLDER"/*
+do
+  echo "$entry"
+done
 # cd $LOCAL_FOLDER
 # echo $HOST $USERNAME $PASSWORD
 # FTP login and upload is explained in paragraph below
