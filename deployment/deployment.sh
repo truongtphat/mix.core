@@ -10,4 +10,5 @@ user $FTP_USERNAME $FTP_PASSWORD
 cd /test_folder
 prompt
 mput *
+mdel app_offline.htm
 bye
