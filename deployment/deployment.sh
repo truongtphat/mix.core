@@ -6,7 +6,7 @@ FILES="./*"
 cd $LOCAL_FOLDER
 ftp -inv <<EOF
 open $FTP_HOST
-user $FTP_USER $FTP_PASSWORD
+user $FTP_USERNAME $FTP_PASSWORD
 cd /test_folder
 mput $FILES
 bye
