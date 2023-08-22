@@ -38,10 +38,11 @@ jobs:
         dotnet publish develop/src/applications/Mixcore/Mixcore.csproj -c Release --output develop/release --no-restore
     - name: Take app offline
       run: |
-        cd $DEPLOYMENT_FOLDER
-        bash "$DEPLOYMENT_FOLDER"/takeappoffline.sh
+        cd develop/deployment
+        echo $DEPLOYMENT_FOLDER
+        bash develop/deployment/takeappoffline.sh
     - name: Deploy
       shell: bash
       run: |
         cd $LOCAL_FOLDER
-        bash "$DEPLOYMENT_FOLDER"/deployment.sh
+        bash develop/deployment/deployment.sh
