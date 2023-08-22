@@ -11,7 +11,8 @@ env:
   FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
   LOCAL_FOLDER: "develop/release"
   REMOTE_FOLDER: "/dev.mixcore.org"
-  
+  DEPLOYMENT_FOLDER: "develop/deployment"
+
 jobs:
   build:
     runs-on: windows-latest
@@ -37,15 +38,10 @@ jobs:
         dotnet publish develop/src/applications/Mixcore/Mixcore.csproj -c Release --output develop/release --no-restore
     - name: Take app offline
       run: |
-        cd develop/deployment
-        ftp -inv <<<-EOF
-        open $FTP_HOST
-        user $FTP_USERNAME $FTP_PASSWORD
-        cd $REMOTE_FOLDER
-        put app_offline.htm
-        bye
+        cd $DEPLOYMENT_FOLDER
+        bash $DEPLOYMENT_FOLDER/takeappoffline.sh
     - name: Deploy
       shell: bash
       run: |
         cd $LOCAL_FOLDER
-        bash develop/deployment/deployment.sh
+        bash $DEPLOYMENT_FOLDER/deployment.sh
