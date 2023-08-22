@@ -4,5 +4,5 @@ open $FTP_HOST
 user $FTP_USERNAME $FTP_PASSWORD
 cd $REMOTE_FOLDER
 prompt
-mput *.htm
+mput app_offline.htm
 bye
