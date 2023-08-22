@@ -39,9 +39,9 @@ jobs:
     - name: Take app offline
       run: |
         cd $DEPLOYMENT_FOLDER
-        bash $DEPLOYMENT_FOLDER/takeappoffline.sh
+        bash "$DEPLOYMENT_FOLDER"/takeappoffline.sh
     - name: Deploy
       shell: bash
       run: |
         cd $LOCAL_FOLDER
-        bash $DEPLOYMENT_FOLDER/deployment.sh
+        bash "$DEPLOYMENT_FOLDER"/deployment.sh
