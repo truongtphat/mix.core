@@ -40,7 +40,7 @@ jobs:
       run: |
         cd develop/deployment
         echo $DEPLOYMENT_FOLDER
-        bash develop/deployment/takeappoffline.sh
+        bash takeappoffline.sh
     - name: Deploy
       shell: bash
       run: |
