@@ -39,7 +39,6 @@ jobs:
     - name: Take app offline
       run: |
         cd develop/deployment
-        echo $DEPLOYMENT_FOLDER
         bash takeappoffline.sh
     - name: Deploy
       shell: bash
